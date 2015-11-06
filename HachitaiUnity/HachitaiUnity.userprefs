@@ -1,0 +1,14 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Networking/WebSocketClient.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Events/EventManager.cs" Line="81" Column="26" />
+      <File FileName="Assets/Scripts/Networking/WebSocketClient.cs" Line="125" Column="15" />
+      <File FileName="Assets/Example/Scripts/Example.cs" Line="51" Column="69" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
