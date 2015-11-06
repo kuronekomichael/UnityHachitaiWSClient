@@ -27,12 +27,6 @@ public class WebSocketClient : MonoBehaviour {
 
 	// -----------------------------------------------------------------
 	void Update () {
-		
-		if (Input.GetKeyUp (KeyCode.Space)) {
-			Send ("Test Message");
-
-		}
-
 
 		if (messageQueue.Count > 0) {
 			lock (messageQueue.SyncRoot) {
@@ -129,22 +123,22 @@ public class WebSocketClient : MonoBehaviour {
 			string[] str = System.Text.RegularExpressions.Regex.Split (mess, ",");
 
 			// Roomナンバーと一致したら
-			if (str [0] == EventManager.Instance.Room.ToString ("0")) {
+			if (str [0] == EventManager.Room.ToString ("0")) {
 
-				if (str [1] == "0") {
-					EventManager.OnTriggerT ();
+				if (str [1] == "0" && EventManager.TriggerT != null) {
+					EventManager.TriggerT.Invoke ();
 				}
 
-				if (str [1] == "1") {
-					EventManager.OnTriggerE ();
+				if (str [1] == "1" && EventManager.TriggerE != null) {
+					EventManager.TriggerE.Invoke ();
 				}
 
-				if (str [1] == "2") {
-					EventManager.OnTriggerA ();
+				if (str [1] == "2" && EventManager.TriggerA != null) {
+					EventManager.TriggerA.Invoke ();
 				}
 
-				if (str [1] == "3") {
-					EventManager.OnTriggerM ();
+				if (str [1] == "3" && EventManager.TriggerM != null) {
+					EventManager.TriggerM.Invoke ();
 				}
 			}
 

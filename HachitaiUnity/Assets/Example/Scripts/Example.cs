@@ -18,21 +18,21 @@ public class Example : MonoBehaviour {
 
 		// WebSocketメッセージが来た時の処理の登録
 		// Tボタンが押された時
-		EventManager.TriggerT += (sender, e) => {
+		EventManager.TriggerT.AddListener (() => {
 			BallRef.GetComponent <Rigidbody> ().AddForce (Vector3.forward * pow);
-		};
+		});
 		// Eボタンが押された時
-		EventManager.TriggerE += (sender, e) => {
+		EventManager.TriggerE.AddListener (() => {
 			BallRef.GetComponent <Rigidbody> ().AddForce (Vector3.right   * pow);
-		};
+		});
 		// Aボタンが押された時
-		EventManager.TriggerA += (sender, e) => {
+		EventManager.TriggerA.AddListener (() => {
 			BallRef.GetComponent <Rigidbody> ().AddForce (Vector3.back    * pow);
-		};
+		});
 		// Mボタンが押された時
-		EventManager.TriggerM += (sender, e) => {
+		EventManager.TriggerM.AddListener (() => {
 			BallRef.GetComponent <Rigidbody> ().AddForce (Vector3.left    * pow);
-		};
+		});
 
 
 	}

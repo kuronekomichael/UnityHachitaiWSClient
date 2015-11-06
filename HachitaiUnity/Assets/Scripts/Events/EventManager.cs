@@ -1,89 +1,67 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public class EventManager : SingletonMonoBehaviour <EventManager> {
+public class EventManager : MonoBehaviour {
 
 	// -----------------------------------------------------------------
-	public int   Room = -1;
+	public static int        Room = 0;
 
-	public static event EventHandler TriggerT;
-	public static event EventHandler TriggerE;
-	public static event EventHandler TriggerA;
-	public static event EventHandler TriggerM;
-
-	// -----------------------------------------------------------------
-	public static void OnTriggerT () {
-		if (TriggerT != null) {
-			TriggerT (null, EventArgs.Empty);
-		}
-	}
-
-	public static void OnTriggerE () {
-		if (TriggerE != null) {
-			TriggerE (null, EventArgs.Empty);
-		}
-	}
-
-	public static void OnTriggerA () {
-		if (TriggerA != null) {
-			TriggerA (null, EventArgs.Empty);
-		}
-	}
-
-	public static void OnTriggerM () {
-		if (TriggerM != null) {
-			TriggerM (null, EventArgs.Empty);
-		}
-	}
+	public static UnityEvent TriggerT;
+	public static UnityEvent TriggerE;
+	public static UnityEvent TriggerA;
+	public static UnityEvent TriggerM;
 
 	// -----------------------------------------------------------------
-	public void Awake () {
+	void Awake () {
+
+		if (TriggerT == null)
+			TriggerT = new UnityEvent ();
 		
-		if (this != Instance) {
-			Destroy (this);
-			return;
-		}
-		DontDestroyOnLoad (this.gameObject);
+		if (TriggerE == null)
+			TriggerE = new UnityEvent ();
 		
-	}
+		if (TriggerA == null)
+			TriggerA = new UnityEvent ();
+		
+		if (TriggerM == null)
+			TriggerM = new UnityEvent ();
 
-	// -----------------------------------------------------------------
-	void Start () {
 
-		TriggerT += (sender, e) => {
+		TriggerT.AddListener (() => {
 			Debug.Log ("TriggerT");
-		};
-		TriggerE += (sender, e) => {
+		});
+		TriggerE.AddListener (() => {
 			Debug.Log ("TriggerE");
-		};
-		TriggerA += (sender, e) => {
+		});
+		TriggerA.AddListener (() => {
 			Debug.Log ("TriggerA");
-		};
-		TriggerM += (sender, e) => {
+		});
+		TriggerM.AddListener (() => {
 			Debug.Log ("TriggerM");
-		};
+		});
 
 	}
 
 	// -----------------------------------------------------------------
 	void Update () {
 
-		if (Input.GetKeyUp (KeyCode.T)) {
-			TriggerT (this, EventArgs.Empty);
+		if (Input.GetKeyUp (KeyCode.T) && TriggerT != null) {
+			TriggerT.Invoke ();
 		}
 
-		if (Input.GetKeyUp (KeyCode.E)) {
-			TriggerE (this, EventArgs.Empty);
+		if (Input.GetKeyUp (KeyCode.E) && TriggerE != null) {
+			TriggerE.Invoke ();
 		}
 
-		if (Input.GetKeyUp (KeyCode.A)) {
-			TriggerA (this, EventArgs.Empty);
+		if (Input.GetKeyUp (KeyCode.A) && TriggerA != null) {
+			TriggerA.Invoke ();
 		}
 
-		if (Input.GetKeyUp (KeyCode.M)) {
-			TriggerM (this, EventArgs.Empty);
+		if (Input.GetKeyUp (KeyCode.M) && TriggerM != null) {
+			TriggerM.Invoke ();
 		}
 
 	}
