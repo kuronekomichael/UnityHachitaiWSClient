@@ -7,8 +7,6 @@ using System.Collections.Generic;
 public class EventManager : MonoBehaviour {
 
 	// -----------------------------------------------------------------
-	public static int        Room = 0;
-
 	public static UnityEvent TriggerT;
 	public static UnityEvent TriggerE;
 	public static UnityEvent TriggerA;
